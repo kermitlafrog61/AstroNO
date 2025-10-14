@@ -26,7 +26,7 @@ services:
   - type: pserv
     name: astro-db
     env: docker
-    image: postgres:15
+    image: postgres
     plan: free
     envVars:
       - key: POSTGRES_DB
