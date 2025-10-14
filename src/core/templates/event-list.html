@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for event in object_list %}
+<body>
+    <li>
+        {{ event.name }} ({{ event.date }}) ({{event.start_time}} - {{event.end_time}})—
+        <a href="{% url 'event-detail' event.id %}">Register</a>
+    </li>
+</body>
+{% endfor %}
+
+{% endblock %}

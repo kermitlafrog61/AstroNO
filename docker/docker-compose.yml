@@ -1,0 +1,27 @@
+name: AstroNO
+services:
+  api:
+    build:
+      context: ../src
+      dockerfile: ../docker/Dockerfile
+    volumes:
+      - ../src:/app
+    entrypoint: /app/wsgi-entrypoint.sh
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../src/.env
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ../src/.env
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
