@@ -10,18 +10,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    environment:
-      - DJANGO_DEBUG
-      - DJANGO_SECRET_KEY
-      - DJANGO_ALLOWED_HOSTS
-      - DJANGO_BASE_URL
-      - DJANGO_CSRF_TRUSTED_ORIGINS
-      - DJANGO_SUPERUSER_USERNAME
-      - DJANGO_SUPERUSER_EMAIL
-      - DJANGO_SUPERUSER_PASSWORD
-      - POSTGRES_DB
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
+    env_file:
+      - "src/.env"
     depends_on:
       - db
 
@@ -29,18 +19,8 @@ services:
     image: postgres:15
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    environment:
-      - DJANGO_DEBUG
-      - DJANGO_SECRET_KEY
-      - DJANGO_ALLOWED_HOSTS
-      - DJANGO_BASE_URL
-      - DJANGO_CSRF_TRUSTED_ORIGINS
-      - DJANGO_SUPERUSER_USERNAME
-      - DJANGO_SUPERUSER_EMAIL
-      - DJANGO_SUPERUSER_PASSWORD
-      - POSTGRES_DB
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
+    env_file:
+      - "src/.env"
     ports:
       - "5432:5432"
 
