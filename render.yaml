@@ -4,7 +4,6 @@ services:
     env: docker
     plan: free
     dockerfilePath: ./docker/Dockerfile
-    buildCommand: ""
     startCommand: "/app/wsgi-entrypoint.sh"
     envVars:
       - key: DJANGO_DEBUG
@@ -13,33 +12,21 @@ services:
         value: "astro-api.onrender.com"
       - key: DJANGO_SECRET_KEY
         generateValue: true
-      - key: DJANGO_BASE_URL
-        value: "https://astro-api.onrender.com"
-      - key: DJANGO_CSRF_TRUSTED_ORIGINS
-        value: "https://astro-api.onrender.com"
-      - key: DJANGO_SUPERUSER_USERNAME
-        value: "admin"
-      - key: DJANGO_SUPERUSER_EMAIL
-        value: "admin@example.com"
-      - key: DJANGO_SUPERUSER_PASSWORD
-        generateValue: true
       - key: POSTGRES_DB
         value: "astro_db"
       - key: POSTGRES_USER
         value: "astro_user"
       - key: POSTGRES_PASSWORD
-        generateValue: true
+        value: "replace_me_later"
       - key: POSTGRES_HOST
         value: "astro-db"
       - key: POSTGRES_PORT
         value: "5432"
-    dependsOn:
-      - astro-db
 
   - type: pserv
     name: astro-db
     env: docker
-    dockerImage: postgres:15
+    image: postgres:15
     plan: free
     envVars:
       - key: POSTGRES_DB
@@ -47,4 +34,4 @@ services:
       - key: POSTGRES_USER
         value: "astro_user"
       - key: POSTGRES_PASSWORD
-        generateValue: true
+        value: "replace_me_later"
