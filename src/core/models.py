@@ -42,7 +42,7 @@ class Registration(models.Model):
     student_whatsapp_number = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(
-        max_length=1, choices=Status.choices, default=Status.CONFIRMED)
+        max_length=1, choices=Status.choices, default=Status.UNCONFIRMED)
 
     def save(self, *args, force_insert=False, force_update=False, using=None, update_fields=None):
         if (timezone.now() < self.event.registration_start
