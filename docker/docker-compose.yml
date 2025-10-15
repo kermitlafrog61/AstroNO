@@ -39,7 +39,7 @@ services:
       - media:/app/media
     depends_on:
       - db
-      - backend
+      - api
 
 volumes:
   postgres_data:
