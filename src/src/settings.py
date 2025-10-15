@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-BASE_URL = os.getenv("DJANGO_BASE_URL", "http://localhost:8080")
+BASE_URL = os.getenv("DJANGO_BASE_URL", "http://localhost:8000")
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "your-default-secret-key")
 

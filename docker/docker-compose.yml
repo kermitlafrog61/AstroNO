@@ -8,10 +8,9 @@ services:
       - ../src:/app
     entrypoint: /app/wsgi-entrypoint.sh
     ports:
-      - "80:80"
-      - "443:443"
+      - "8000:8000"
     env_file:
-      - "src/.env"
+      - "../src/.env"
     depends_on:
       - db
 
@@ -20,7 +19,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     env_file:
-      - "src/.env"
+      - "../src/.env"
     ports:
       - "5432:5432"
 

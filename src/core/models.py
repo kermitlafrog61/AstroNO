@@ -31,14 +31,18 @@ class Event(models.Model):
 
 
 class Registration(models.Model):
+    class Status(models.TextChoices):
+        CONFIRMED = "C", 'Confirmed'
+        UNCONFIRMED = 'U', 'Unconfirmed'
+
     event = models.ForeignKey(
         Event, on_delete=models.CASCADE, related_name='registrations')
     student_id = models.CharField(max_length=8)
     student_name = models.CharField(max_length=150, null=True, blank=True)
+    student_whatsapp_number = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        unique_together = [('event', 'student_id')]
+    status = models.CharField(
+        max_length=1, choices=Status.choices, default=Status.CONFIRMED)
 
     def save(self, *args, force_insert=False, force_update=False, using=None, update_fields=None):
         if (timezone.now() < self.event.registration_start

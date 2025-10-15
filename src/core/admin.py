@@ -2,4 +2,11 @@ from django.contrib import admin
 
 from .models import Event, Registration
 
-admin.site.register([Event, Registration])
+
+@admin.register(Registration)
+class RegistrationAdmin(admin.ModelAdmin):
+    list_display = ["event", "student_name", "status"]
+    list_filter = ["status", 'event']
+    search_fields = ['student_name', 'student_id']
+
+admin.site.register([Event])

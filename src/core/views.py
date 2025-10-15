@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 
@@ -23,7 +24,13 @@ class EventRegisterView(generic.FormView):
     def form_valid(self, form):
         registration = form.save(commit=False)
         registration.event = self.event
-        registration.save()
+
+        try:
+            registration.save()
+        except ValidationError as e:
+            form.add_error(None, e.messages)
+            return self.form_invalid(form)
+
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):

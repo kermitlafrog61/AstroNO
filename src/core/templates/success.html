@@ -1,1 +1,41 @@
-<h1>Success!</h1>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Instructions</title>
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body class="registration-bg">
+    <div class="registration-container">
+        <h2>Оплата участия</h2>
+
+        <div class="form-group">
+            <p>Чтобы завершить регистрацию, отправьте <strong>1000 ₸</strong> на номер Kaspi:</p>
+            <p style="text-align:center; font-size:18px; font-weight:bold; color:#007bff;">+7 747 856 6016</p>
+        </div>
+
+        <div class="form-group">
+            <p>После оплаты, пожалуйста, отправьте чек на WhatsApp по номеру:</p>
+            <p style="text-align:center;">
+                <a href="https://wa.me/77478566016?text=Здравствуйте!%20Я%20оплатил%20за%20мероприятие.%20Вот%20мой%20чек."
+                    target="_blank"
+                    style="color:white; background-color:#25D366; padding:10px 20px; border-radius:5px; text-decoration:none;">
+                    Отправить чек в WhatsApp
+                </a>
+            </p>
+        </div>
+
+        <div class="form-group">
+            <p style="text-align:center; font-size:14px; color:#666;">
+                После проверки чека вы получите подтверждение участия.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
