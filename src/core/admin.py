@@ -10,7 +10,7 @@ class RegistrationAdmin(admin.ModelAdmin):
     search_fields = ['student_name', 'student_id']
 
     def confirm(modeladmin, request, queryset):
-        queryset.update(status="c")
+        queryset.update(status="C")
 
     actions = [confirm]
 
